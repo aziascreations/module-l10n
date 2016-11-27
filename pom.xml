@@ -12,6 +12,14 @@
 	<description>[Insert a desc. here]</description>
 	<url>https://github.com/aziascreations/Java-Modules</url>
 	
+	<licenses>
+		<license>
+			<name>Unlicense</name>
+			<url>https://unlicense.org/UNLICENSE</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+	
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		
