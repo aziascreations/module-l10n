@@ -17,11 +17,18 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.JsonSyntaxException;
 
+/**
+ * Insert useful text here.
+ * 
+ * @author Herwin Bozet
+ * @version 1.0.0
+ * @since 09-12-2016
+ */
 public class Localizer {
 	private final static Logger logger = LoggerFactory.getLogger(Localizer.class);
 	protected ArrayList<String> availableLocales, localesFolder;
 	protected HashMap<String, String> lines;
-	protected String defaultLocale;
+	protected String defaultLocale, currentLocale;
 	protected JsonParser jsonParser;
 	protected boolean loadCommonLocale;
 	
@@ -30,24 +37,24 @@ public class Localizer {
 	 * The default configuration has the following settings:
 	 * <ul>
 	 * 	<li>The default locale folder is set to: "./lang/"</li>
-	 * 	<li>The default locale is set to: "en_US"</li>
+	 * 	<li>The default locale is set to: "eng_US"</li>
 	 * 	<li>The common locale won't be loaded.</li>
 	 * </ul>
 	 */
 	public Localizer() {
-		this("./lang/", "en_US", false);
+		this("./lang/", "eng_US", false);
 	}
 	
 	public Localizer(boolean loadCommonLocale) {
-		this("./lang/", "en_US", loadCommonLocale);
+		this("./lang/", "eng_US", loadCommonLocale);
 	}
 	
 	public Localizer(String folder) {
-		this(folder, "en_US", false);
+		this(folder, "eng_US", false);
 	}
 	
 	public Localizer(String folder, boolean loadCommonLocale) {
-		this(folder, "en_US", loadCommonLocale);
+		this(folder, "eng_US", loadCommonLocale);
 	}
 	
 	public Localizer(String folder, String defaultLocale) {
@@ -62,6 +69,11 @@ public class Localizer {
 		this.loadCommonLocale = loadCommonLocale;
 	}
 	
+	/**
+	 * 
+	 * @return
+	 * @throws IOException - Thrown if [check the Exception]
+	 */
 	public boolean init() throws IOException {
 		this.availableLocales = new ArrayList<String>();
 		this.lines = new HashMap<String, String>();
@@ -107,6 +119,7 @@ public class Localizer {
 	}
 	
 	public boolean load(String par1) throws IOException {
+		this.currentLocale = par1;
 		//This part is not optimized yet, I had to get it working asap.
 		//The garbage collector isn't going to like this...
 		if(this.loadCommonLocale) {
@@ -148,7 +161,7 @@ public class Localizer {
 			return true;
 		} catch(JsonSyntaxException jse) {
 			jse.printStackTrace();
-			logger.error("Error ljse1");
+			//logger.error("Syntax error in json String.");
 			return false;
 		}
 	}

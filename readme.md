@@ -14,7 +14,7 @@ You have to add the [JitPack](https://jitpack.io/) repository to you project's p
 </repositories>
 ```
 
-And this dependency.
+And this to your dependencies.
 ```xml
 <dependency>
 	<groupId>com.github.aziascreations</groupId>
@@ -26,7 +26,7 @@ And this dependency.
 If you are using another build automation tool or if want to download it, go check the JitPack page: https://jitpack.io/#aziascreations/module-versioning/
 
 ## Usage
-
+Firstly, you have to import `com.azias.module.l10n.Localizer` in your code.
 
 
 ## License
